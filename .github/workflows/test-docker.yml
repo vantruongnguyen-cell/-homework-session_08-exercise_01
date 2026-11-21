@@ -1,0 +1,11 @@
+name: Test Docker DooD
+on: [push]
+
+jobs:
+  check-docker:
+    runs-on: self-hosted
+    steps:
+      - name: Kiem tra ket noi Docker Daemon
+        run: |
+          docker info
+          docker ps
