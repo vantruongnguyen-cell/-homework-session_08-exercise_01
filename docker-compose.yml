@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  github-runner:
+    image: myoung34/github-runner:latest
+    container_name: quickbite-self-hosted-runner
+    restart: always
+    environment:
+      REPO_URL: https://github.com/vantruongnguyen-cell/-homework-session_08-exercise_01
+      RUNNER_NAME: quickbite-vps-runner
+      
+      ACCESS_TOKEN: ${ACCESS_TOKEN}
+      RUNNER_WORKDIR: /tmp/runner/work
+    volumes:
+      # Ánh xạ Docker Socket từ máy host vào container Runner
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/runner/work:/tmp/runner/work
